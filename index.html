@@ -1,1 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>癌症，其實比你想的更近｜癌症理賠案例 課程筆記</title>
+<meta name="description" content="癌症理賠案例課程學習筆記：14 個真實案例、治療費用實價、理賠爭議整理與業務行動清單。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@500;700;900&family=Oswald:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
 
+<div class="progress" aria-hidden="true"><i id="bar"></i></div>
+
+<header class="topbar">
+  <a class="brand" href="#top">
+    <span class="brand-mark">筆記</span>
+    <span class="brand-txt">癌症，其實比你想的更近</span>
+  </a>
+  <nav class="nav" aria-label="章節導覽">
+    <a href="#facts">數據</a>
+    <a href="#costs">費用</a>
+    <a href="#cases">案例</a>
+    <a href="#disputes">爭議</a>
+    <a href="#check">自檢</a>
+    <a href="#quotes">金句</a>
+    <a href="#actions">行動</a>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-grid">
+    <div class="hero-main">
+      <p class="eyebrow">COURSE NOTES ・ 癌症理賠案例</p>
+      <h1 class="display">
+        癌症，<br>其實比你想的<mark class="mk">更近</mark>
+      </h1>
+      <p class="lede">
+        這堂課用 14 個<strong>講師親手經辦的理賠件</strong>，把「保額不夠」這件事，講成一個一個有名字、有年紀、有帳單的人。
+        這一頁是那堂課的完整筆記——為了讓你在下一次見客戶前，能想起其中一個。
+      </p>
+      <div class="hero-cta">
+        <a class="btn" href="#calc">試算：你有多少子彈</a>
+        <a class="btn ghost" href="#cases">直接看 16 個案例</a>
+      </div>
+    </div>
+
+    <aside class="chart" aria-label="課程資訊卡">
+      <div class="chart-head"><span>COURSE RECORD</span><span>NO. 001</span></div>
+      <dl class="chart-rows">
+        <div><dt>主題</dt><dd>癌症理賠案例</dd></div>
+        <div><dt>案例數</dt><dd>14 個真實理賠件</dd></div>
+        <div><dt>講師年資</dt><dd>民國 94 年入行，逾 20 年</dd></div>
+        <div><dt>講師自身額度</dt><dd class="fig">850 萬</dd></div>
+      </dl>
+      <div class="ticker">
+        <span class="ticker-label">你打開這一頁之後</span>
+        <p class="ticker-num"><b id="tickCount">0</b> 人</p>
+        <span class="ticker-note">台灣每 3 分 48 秒新增 1 位癌症病人</span>
+      </div>
+    </aside>
+  </div>
+
+  <div class="hero-stats" id="heroStats"></div>
+</section>
+
+<!-- ============ 01 數據 ============ -->
+<section class="sect" id="facts">
+  <div class="sect-head">
+    <span class="num">01</span>
+    <h2>為什麼現在非談不可</h2>
+    <p class="sect-sub">民國 94 年講「打麻將四個人有一個」，115 年是「你、我、他三個人有一個」。再過 15 年，在場只要活著的都是癌友。</p>
+  </div>
+  <div class="facts" id="facts-grid"></div>
+
+  <div class="treatbar">
+    <h3 class="mini-h">此刻仍在治療中的人數</h3>
+    <div class="treatbar-row" id="treatbar"></div>
+  </div>
+</section>
+
+<!-- ============ 02 費用 ============ -->
+<section class="sect alt" id="costs">
+  <div class="sect-head">
+    <span class="num">02</span>
+    <h2>一張帳單清冊</h2>
+    <p class="sect-sub">課堂上出現過的每一個自費金額。這些數字不是嚇人用的，是客戶做決定時真正看見的那一張紙。</p>
+  </div>
+
+  <div class="ledger" id="ledger"></div>
+
+  <!-- 子彈試算 -->
+  <div class="calc" id="calc">
+    <div class="calc-head">
+      <h3>你有多少子彈？</h3>
+      <p>拖動額度，看看哪些治療是你買得起的選項——哪些只能在診間裡放棄。</p>
+    </div>
+
+    <div class="calc-control">
+      <div class="calc-readout">
+        <span class="calc-label">癌症＋重疾總額度</span>
+        <p class="calc-value"><b id="amt">100</b><em>萬</em></p>
+        <p class="calc-verdict" id="verdict"></p>
+      </div>
+      <div class="calc-slider">
+        <input type="range" id="range" min="20" max="850" step="10" value="100"
+               aria-label="設定你的癌症與重疾總額度（萬元）">
+        <div class="ticks">
+          <button type="button" data-v="50">50</button>
+          <button type="button" data-v="100">100</button>
+          <button type="button" data-v="200">200</button>
+          <button type="button" data-v="300">300</button>
+          <button type="button" data-v="500">500</button>
+          <button type="button" data-v="850">850<i>講師</i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="calc-grid" id="calcGrid"></div>
+  </div>
+</section>
+
+<!-- ============ 03 案例 ============ -->
+<section class="sect" id="cases">
+  <div class="sect-head">
+    <span class="num">03</span>
+    <h2>16 個有名字的人</h2>
+    <p class="sect-sub">每一張卡片都是一件真實理賠。點開看完整經過、花了多少、以及講師要我們記住的那一句。</p>
+  </div>
+
+  <div class="filters" id="filters" role="tablist" aria-label="案例分類">
+    <button class="chip on" data-f="all">全部</button>
+    <button class="chip" data-f="claim">理賠爭議</button>
+    <button class="chip" data-f="cost">費用真相</button>
+    <button class="chip" data-f="early">錯過的警訊</button>
+    <button class="chip" data-f="choice">額度＝選擇權</button>
+  </div>
+
+  <div class="cases" id="caseGrid"></div>
+</section>
+
+<!-- ============ 04 爭議 ============ -->
+<section class="sect alt" id="disputes">
+  <div class="sect-head">
+    <span class="num">04</span>
+    <h2>五件被擋下來的理賠</h2>
+    <p class="sect-sub">重點不是哪一家公司，是這五種「爭議類型」。看懂了，你就知道要幫客戶檢查哪一條。</p>
+  </div>
+  <div class="disputes" id="disputes-grid"></div>
+  <p class="disclaimer">
+    以上為講師課堂分享之個案處理經驗，屬個別案件之協商結果，不代表各保險公司整體理賠品質，亦不構成任何投保建議。實際理賠以保單條款及各公司核定為準。
+  </p>
+</section>
+
+<!-- ============ 05 自檢 ============ -->
+<section class="sect" id="check">
+  <div class="sect-head">
+    <span class="num">05</span>
+    <h2>今天回家就能做的事</h2>
+    <p class="sect-sub">課堂上講師要大家當場摸一次。三個部位，六個警訊。</p>
+  </div>
+
+  <div class="checks" id="checks"></div>
+
+  <h3 class="mini-h spaced">身體發出的六個訊號</h3>
+  <div class="warns" id="warns"></div>
+</section>
+
+<!-- ============ 06 金句 ============ -->
+<section class="sect alt" id="quotes">
+  <div class="sect-head">
+    <span class="num">06</span>
+    <h2>金句</h2>
+    <p class="sect-sub">背兩句，下次見客戶時用得上。</p>
+  </div>
+  <div class="quotes" id="quotes-grid"></div>
+</section>
+
+<!-- ============ 07 行動 ============ -->
+<section class="sect" id="actions">
+  <div class="sect-head">
+    <span class="num">07</span>
+    <h2>離開這一頁之後</h2>
+    <p class="sect-sub">課程最後十分鐘的重點：不是感動，是動作。</p>
+  </div>
+  <ol class="actions" id="actions-list"></ol>
+
+  <div class="closing">
+    <p class="closing-q">「如果醫生開口對你說<br><mark class="mk mk-r">你得的是癌症</mark><br>這個時候，你有多少子彈？」</p>
+    <p class="closing-by">課程結語</p>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="foot-in">
+    <p class="foot-t">癌症，其實比你想的更近</p>
+    <p class="foot-s">
+      本頁為個人課程學習筆記，內容整理自講師口述之課堂分享，數字與統計以講師課堂引用為準，未經官方查證。<br>
+      案例已略去可辨識個資，僅保留與理賠學習相關之情節。本頁非保險商品廣告、非招攬文件，亦不構成醫療建議。<br>
+      商品內容、費率與核保規則請以保險公司最新公告及保單條款為準；身體不適請就醫。
+    </p>
+    <p class="foot-m">COURSE NOTES ・ 癌症理賠案例</p>
+  </div>
+</footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
